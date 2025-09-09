@@ -1,0 +1,29 @@
+# Galaxy Digital Geofeed
+# This feed is encoded in RFC 8805 format.
+#
+# This data feed provides approximate geo locations for a subset of
+# Galaxy Digital IP space, and the data included in this feed may be used only
+# for improving the accuracy of Geo:IP lookups.
+
+# Format: IP_PREFIX,COUNTRY_CODE,REGION_CODE,CITY,
+
+# Galaxy Digital IP Allocations
+# London
+86.54.152.0/24,GB,GB-ENG,London,
+
+# New York
+86.54.153.0/24,US,US-NY,New York,
+
+# Tokyo
+86.54.154.0/24,JP,JP-13,Tokyo,
+
+# Reserved Ranges (no specific location)
+# 86.54.155.0/24 -- Reserved
+# 86.54.156.0/24 -- Reserved
+# 86.54.157.0/24 -- Reserved
+# 86.54.158.0/24 -- Reserved
+
+# Anycast Space (global distribution)
+# Note: Anycast space is not assigned to a specific geographic location
+# as it's served from multiple locations globally
+# 86.54.159.0/24 -- Anycast space used globally
