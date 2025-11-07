@@ -1,5 +1,6 @@
 function FindProxyForURL(url, host) {
-  /* Return DIRECT to Allow access */
+
+    /* Galaxy Digital and related domains */
   if ((localHostOrDomainIs(host, "contactgfm.com")) ||
     (localHostOrDomainIs(host, "g2d2.io")) ||
     (localHostOrDomainIs(host, "galaxy.app")) ||
@@ -29,6 +30,6 @@ function FindProxyForURL(url, host) {
     (localHostOrDomainIs(host, "exp-tas.com")) ||
     (localHostOrDomainIs(host, "kraken.com")) )
     return "DIRECT";
-  /* Default Block Statement to block anything not allowed above */
+
   return "DEFAULT";
 }
