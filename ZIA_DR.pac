@@ -23,22 +23,24 @@ function FindProxyForURL(url, host)
     localHostOrDomainIs(host, "gfmcryptocademy.com") ||
     localHostOrDomainIs(host, "glxy.com") ||
     localHostOrDomainIs(host, "glxy.net") ||
-    localHostOrDomainIs(host, "visionhill.com") ||
-    // third party domains
-    localHostOrDomainIs(host, "usequark.xyz") ||
-    localHostOrDomainIs(host, "netsuite.com") ||
-    localHostOrDomainIs(host, "artemisxyz.com") ||
-    localHostOrDomainIs(host, "morpho.org") ||
-    localHostOrDomainIs(host, "arbitrum.io") ||
-    localHostOrDomainIs(host, "gmxinfra.io") ||
-    localHostOrDomainIs(host, "exp-tas.com") ||
-    localHostOrDomainIs(host, "kraken.com") ||
-    //ZPA Connectivity is required for Zscaler DR
-    localHostOrDomainIs(host, "*.zpath.net") )  
+    localHostOrDomainIs(host, "visionhill.com"))
+    
     return "DIRECT";
   
 //ZPA Connectivity is required for Zscaler DR - PRIVATE IP RANGE Belongs to IP
   if (isInNet(host, "100.64.0.0", "255.255.0.0"))
+return "DIRECT";
+
+//Third Party Allowlist for ZIA DR
+  if (shExpMatch(host, ".usequark.xyz") ||
+shExpMatch(host, "*.netsuite.com") ||
+shExpMatch(host, "*.artemisxyz.com") ||
+shExpMatch(host, "*.morpho.org") ||
+shExpMatch(host, "*.arbitrum.io") ||
+shExpMatch(host, "*.gmxinfra.io") ||
+shExpMatch(host, "*.morpho.org") ||
+shExpMatch(host, "*.exp-tas.com") ||
+shExpMatch(host, "*.kraken.com"))
 return "DIRECT";
 
 }
