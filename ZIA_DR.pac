@@ -1,22 +1,6 @@
 function FindProxyForURL(url, host)
 {
   //
-  // Bypass proxy for ZPA IP range 100.64.0.0/16
-  //
-  if (isInNet(host, "100.64.0.0", "255.255.0.0"))
-  {
-    return "DIRECT";
-  }
-  //
-  // Bypass proxy for ZPA domains
-  //
-  if (shExpMatch(host, "*.zpath.net"))
-
-  {
-    return "DIRECT";
-  }
-  
-  //
   // Bypass proxy for Galaxy Digital and related domains
   //
   if (localHostOrDomainIs(host, "contactgfm.com") ||
@@ -38,6 +22,7 @@ function FindProxyForURL(url, host)
     localHostOrDomainIs(host, "glxy.com") ||
     localHostOrDomainIs(host, "glxy.net") ||
     localHostOrDomainIs(host, "visionhill.com") ||
+    // third party domains
     localHostOrDomainIs(host, "usequark.xyz") ||
     localHostOrDomainIs(host, "netsuite.com") ||
     localHostOrDomainIs(host, "artemisxyz.com") ||
