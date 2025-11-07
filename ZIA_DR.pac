@@ -30,12 +30,9 @@ function FindProxyForURL(url, host)
     localHostOrDomainIs(host, "arbitrum.io") ||
     localHostOrDomainIs(host, "gmxinfra.io") ||
     localHostOrDomainIs(host, "exp-tas.com") ||
-    localHostOrDomainIs(host, "kraken.com"))
-  {
+    localHostOrDomainIs(host, "kraken.com"))  
+    {
     return "DIRECT";
   }
-  //
-  // Default: use Zscaler proxy
-  //
-  return "DEFAULT";
+
 }
