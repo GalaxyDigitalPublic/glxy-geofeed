@@ -2,6 +2,8 @@ function FindProxyForURL(url, host)
 {
   //
   // Bypass proxy for Galaxy Digital and related domains
+
+
   //
   if (localHostOrDomainIs(host, "contactgfm.com") ||
     localHostOrDomainIs(host, "g2d2.io") ||
@@ -30,9 +32,13 @@ function FindProxyForURL(url, host)
     localHostOrDomainIs(host, "arbitrum.io") ||
     localHostOrDomainIs(host, "gmxinfra.io") ||
     localHostOrDomainIs(host, "exp-tas.com") ||
-    localHostOrDomainIs(host, "kraken.com"))  
-    {
+    localHostOrDomainIs(host, "kraken.com") ||
+    //ZPA Connectivity is required for Zscaler DR
+    localHostOrDomainIs(host, "*.zpath.net") )  
     return "DIRECT";
-  }
+  
+//ZPA Connectivity is required for Zscaler DR - PRIVATE IP RANGE Belongs to IP
+  if (isInNet(host, "100.64.0.0", "255.255.0.0"))
+return "DIRECT";
 
 }
