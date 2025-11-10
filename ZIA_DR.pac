@@ -32,15 +32,25 @@ function FindProxyForURL(url, host)
 return "DIRECT";
 
 //Third Party Allowlist for ZIA DR
-  if (shExpMatch(host, ".usequark.xyz") ||
-shExpMatch(host, "*.netsuite.com") ||
-shExpMatch(host, "*.artemisxyz.com") ||
-shExpMatch(host, "*.morpho.org") ||
-shExpMatch(host, "*.arbitrum.io") ||
-shExpMatch(host, "*.gmxinfra.io") ||
-shExpMatch(host, "*.morpho.org") ||
-shExpMatch(host, "*.exp-tas.com") ||
-shExpMatch(host, "*.kraken.com"))
-return "DIRECT";
+  if (
+ shExpMatch(host, "usequark.xyz") ||
+ shExpMatch(host, "*.usequark.xyz") ||
+ shExpMatch(host, "*.netsuite.com") ||
+ shExpMatch(host, "netsuite.com") ||
+ shExpMatch(host, "*.artemisxyz.com") ||
+ shExpMatch(host, "artemisxyz.com") ||
+ shExpMatch(host, "*.morpho.org") ||
+ shExpMatch(host, "morpho.org") ||
+ shExpMatch(host, "*.arbitrum.io") ||
+ shExpMatch(host, "arbitrum.io") ||
+ shExpMatch(host, "*.gmxinfra.io") ||
+ shExpMatch(host, "gmxinfra.io") ||
+ shExpMatch(host, "*.exp-tas.com") ||
+ shExpMatch(host, "exp-tas.com") ||
+ shExpMatch(host, "*.kraken.com") ||
+ shExpMatch(host, "kraken.com")
+) {
+ return "DIRECT";
+}
 
 }
