@@ -13,6 +13,8 @@
 
 # New York
 86.54.153.0/24,US,US-NY,New York,
+160.72.157.32/28,US,US-NY,New York,
+216.200.160.72/29,US,US-NY,New York,
 
 # Tokyo
 86.54.154.0/24,JP,JP-13,Tokyo,
