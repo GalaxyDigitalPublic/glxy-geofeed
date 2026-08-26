@@ -24,9 +24,9 @@ function FindProxyForURL(url, host)
     localHostOrDomainIs(host, "glxy.com") ||
     localHostOrDomainIs(host, "glxy.net") ||
     localHostOrDomainIs(host, "visionhill.com"))
-    
+
     return "DIRECT";
-  
+
 //ZPA Connectivity is required for Zscaler DR - PRIVATE IP RANGE Belongs to IP
   if (isInNet(host, "100.64.0.0", "255.255.0.0"))
 return "DIRECT";
@@ -48,7 +48,24 @@ return "DIRECT";
  shExpMatch(host, "*.exp-tas.com") ||
  shExpMatch(host, "exp-tas.com") ||
  shExpMatch(host, "*.kraken.com") ||
- shExpMatch(host, "kraken.com")
+ shExpMatch(host, "kraken.com") ||
+
+ // --- Added: gaps identified in top-100 domain review vs. Zscaler global DR safelist ---
+ // Source: dr_pac_recommended.csv (2-important tier, not present in drdb.txt or prior custom allowlist)
+ shExpMatch(host, "mimecastprotect.com") ||
+ shExpMatch(host, "*.mimecastprotect.com") ||
+ shExpMatch(host, "monaeo.com") ||
+ shExpMatch(host, "*.monaeo.com") ||
+ shExpMatch(host, "urbanairship.com") ||
+ shExpMatch(host, "*.urbanairship.com") ||
+ shExpMatch(host, "nextup.ai") ||
+ shExpMatch(host, "*.nextup.ai") ||
+ shExpMatch(host, "cliqtrq.com") ||
+ shExpMatch(host, "*.cliqtrq.com") ||
+ shExpMatch(host, "hsforms.com") ||
+ shExpMatch(host, "*.hsforms.com") ||
+ shExpMatch(host, "namely.com") ||
+ shExpMatch(host, "*.namely.com")
 ) {
  return "DIRECT";
 }
