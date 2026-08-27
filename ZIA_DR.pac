@@ -1,6 +1,6 @@
 function FindProxyForURL(url, host)
 {
-
+  host = host.toLowerCase();
   //
   // Bypass proxy for Galaxy Digital and related domains
   // NOTE: localHostOrDomainIs() does NOT match subdomains - apex + "*." pairs required
