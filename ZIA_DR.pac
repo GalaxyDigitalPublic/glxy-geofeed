@@ -47,24 +47,23 @@ function FindProxyForURL(url, host)
   ) {
     return "DIRECT";
   }
-
   //
   // ZPA connectivity is required for Zscaler DR - private IP range belongs to ZPA
   //
   if (isInNet(host, "100.64.0.0", "255.255.0.0")) {
     return "DIRECT";
   }
-
   //
   // ZPA control plane domains - required by Zscaler DR documentation
   //
   if (
     shExpMatch(host, "zpath.net") ||
-    shExpMatch(host, "*.zpath.net")
+    shExpMatch(host, "*.zpath.net") ||
+    shExpMatch(host, "zpatwo.net") ||
+    shExpMatch(host, "*.zpatwo.net")
   ) {
     return "DIRECT";
   }
-
   //
   // Third party allowlist for ZIA DR
   //
@@ -87,7 +86,6 @@ function FindProxyForURL(url, host)
     shExpMatch(host, "*.kraken.com") ||
     shExpMatch(host, "haruko.io") ||
     shExpMatch(host, "*.haruko.io") ||
-
     // --- Added: gaps identified in top-100 domain review vs. Zscaler global DR safelist ---
     // Source: dr_pac_recommended.csv (2-important tier, not present in drdb.txt
     // or prior custom allowlist)
@@ -108,6 +106,15 @@ function FindProxyForURL(url, host)
   ) {
     return "DIRECT";
   }
-
-  return "DIRECT";
+  //
+  // NO default return statement, deliberately.
+  // Both "Allow Zscaler Preselected Destinations" AND "DR Custom PAC URL" are enabled.
+  // Zscaler DR docs say to REMOVE the "return drop;" syntax - NOT to replace it with
+  // "return DIRECT;". An explicit DIRECT here is an allow-verdict for every host. Because
+  // the custom PAC takes precedence on conflicts, that makes it authoritatively permit
+  // the entire internet and disables DR restriction completely.
+  // Falling through with no return lets non-matching hosts be evaluated against the
+  // Zscaler global database allowlist (drdb.txt).
+  // DO NOT add any default return here unless the preselected list is turned OFF.
+  //
 }
