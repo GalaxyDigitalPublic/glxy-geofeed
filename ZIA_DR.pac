@@ -60,7 +60,9 @@ function FindProxyForURL(url, host)
     shExpMatch(host, "zpath.net") ||
     shExpMatch(host, "*.zpath.net") ||
     shExpMatch(host, "zpatwo.net") ||
-    shExpMatch(host, "*.zpatwo.net")
+    shExpMatch(host, "*.zpatwo.net") ||
+    shExpMatch(host, "zsapi.net") || // Zscaler API domain used for Admin GUI
+    shExpMatch(host, "*.zsapi.net")
   ) {
     return "DIRECT";
   }
@@ -102,7 +104,17 @@ function FindProxyForURL(url, host)
     shExpMatch(host, "hsforms.com") ||
     shExpMatch(host, "*.hsforms.com") ||
     shExpMatch(host, "namely.com") ||
-    shExpMatch(host, "*.namely.com")
+    shExpMatch(host, "*.namely.com") ||
+
+    // --- Added: gaps identified will require SecOPS to review prior to production---
+    shExpMatch(host, "whatsappbusiness.com") ||
+    shExpMatch(host, "*.whatsappbusiness.com") ||
+    shExpMatch(host, "telegram.me") ||
+    shExpMatch(host, "*.telegram.me") ||
+    shExpMatch(host, "t.me") ||
+    shExpMatch(host, "*.t.me") ||
+    shExpMatch(host, "jamf.com") ||
+    shExpMatch(host, "*.jamf.com")
   ) {
     return "DIRECT";
   }
